@@ -1,7 +1,7 @@
 
 define tinc::network(
   $vpnaddress,
-  $vpnroute=[]
+  $vpnroute=[],
   $netname=$name,
   $autostart=true,
   $addressfamily='ipv4',
