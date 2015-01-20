@@ -11,6 +11,9 @@ define tinc::network(
 )
 {
 
+  validate_array($vpnroute)
+  validate_array($connectto)
+
   if ($autostart == true) {
     concat::fragment { "nets.boot-${netname}":
       content => $netname,
