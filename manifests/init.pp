@@ -10,7 +10,6 @@ class tinc {
   }
 
   concat { '/etc/tinc/nets.boot':
-    ensure  => present,
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
