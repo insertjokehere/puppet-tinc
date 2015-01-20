@@ -4,7 +4,7 @@ define tinc::host(
   $subnets,
   $publickey,
   $publicaddress=undef,
-  $nodename=$::hostname,
+  $nodename=$name,
 )
 {
 
