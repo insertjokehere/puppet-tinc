@@ -17,7 +17,7 @@ class tinc {
   }
 
   concat::fragment { 'nets.boot-header':
-    content => '# These nets will be started automatically on boot. This file is managed by puppet',
+    content => '# These nets will be started automatically on boot. This file is managed by puppet\n',
     target  => '/etc/tinc/nets.boot',
     order   => '01'
   }

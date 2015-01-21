@@ -16,7 +16,7 @@ define tinc::network(
 
   if ($autostart == true) {
     concat::fragment { "nets.boot-${netname}":
-      content => $netname,
+      content => "${netname}\n",
       target  => '/etc/tinc/nets.boot',
       order   => '02'
     }
