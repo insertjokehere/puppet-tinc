@@ -1,9 +1,6 @@
-<% if @publicaddress -%>
-Address = <%= @publicaddress %>
-<% end %>
+<% if @publicaddress -%>Address = <%= @publicaddress %><% end %>
 <% @subnets.each do |val| -%>
-Subnet = <%= @subnet %>
+Subnet = <%= subnet %>
 <% end -%>
-
 
 <%= @publickey %>
