@@ -8,8 +8,6 @@ define tinc::host(
 )
 {
 
-  validate_array($subnets)
-
   file { "/etc/tinc/${netname}/hosts/${nodename}":
     ensure  => present,
     owner   => 'root',

@@ -1,6 +1,10 @@
 <% if @publicaddress -%>Address = <%= @publicaddress %><% end %>
+<% if @subnets.class == 'Array' -%>
 <% @subnets.each do |subnet| -%>
 Subnet = <%= subnet %>
+<% end -%>
+<% else -%>
+Subnet = <%= subnets %>
 <% end -%>
 
 <%= @publickey %>
