@@ -1,5 +1,5 @@
 <% if @publicaddress -%>Address = <%= @publicaddress %><% end %>
-<% if @subnets.class == 'Array' -%>
+<% if subnets.is_a?(Array) -%>
 <% @subnets.each do |subnet| -%>
 Subnet = <%= subnet %>
 <% end -%>
