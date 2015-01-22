@@ -6,7 +6,8 @@ class tinc {
   }
   ->
   service { 'tinc':
-    ensure => running
+    ensure    => running,
+    hasstatus => false
   }
 
   concat { '/etc/tinc/nets.boot':
