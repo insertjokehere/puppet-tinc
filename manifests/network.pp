@@ -8,6 +8,7 @@ define tinc::network(
   $interface='vpn0',
   $connectto=[],
   $nodename=$::hostname,
+  $keysize='4096'
 )
 {
 
@@ -31,13 +32,20 @@ define tinc::network(
     purge  => true
   }
 
+  exec { "tinc-keygen-${netname}":
+    command => "/usr/sbin/tincd -c /etc/tinc/${netname} -K ${keysize} -n ${netname}",
+    creates => "/etc/tinc/${netname}/rsa_key.priv",
+    require => File["/etc/tinc/${netname}/tinc.conf"]
+  }
+
   file { "/etc/tinc/${netname}/tinc.conf":
     ensure  => present,
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
     content => template('tinc/tinc.conf.erb'),
-    notify  => Service['tinc']
+    notify  => Service['tinc'],
+    require => File["/etc/tinc/${netname}"]
   }
 
   file { "/etc/tinc/${netname}/tinc-up":
