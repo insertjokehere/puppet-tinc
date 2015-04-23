@@ -1,8 +1,11 @@
+require 'pathname'
+
 nets = {}
 Dir.glob('/etc/tinc/*').each do |net|
-  if File.exists?("/etc/tinc/#{net}/rsa_key.pub")
-    key = IO.read("/etc/tinc/#{net}/rsa_key.pub")
-    nets[net] = key
+  netname = Pathname(net).each_filename.to_a[-1]
+  if File.exists?("/etc/tinc/#{netname}/rsa_key.pub")
+    key = IO.read("/etc/tinc/#{netname}/rsa_key.pub")
+    nets[netname] = key
   end
 end
 
