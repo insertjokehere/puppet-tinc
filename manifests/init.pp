@@ -1,7 +1,7 @@
 
 class tinc($manageservice=true) {
 
-  $service_noop = not $manageservice
+  $service_noop = ! $manageservice
 
   package { 'tinc':
     ensure => present,
