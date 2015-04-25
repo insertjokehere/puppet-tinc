@@ -1,13 +1,14 @@
 
-class tinc {
+class tinc($manageservice=true) {
 
   package { 'tinc':
-    ensure => present
+    ensure => present,
   }
   ->
   service { 'tinc':
     ensure    => running,
-    hasstatus => false
+    hasstatus => false,
+    noop      => not $manageservice
   }
 
   concat { '/etc/tinc/nets.boot':
