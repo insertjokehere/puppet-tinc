@@ -1,6 +1,8 @@
 
 class tinc($manageservice=true) {
 
+  $service_noop = not $manageservice
+
   package { 'tinc':
     ensure => present,
   }
@@ -8,7 +10,7 @@ class tinc($manageservice=true) {
   service { 'tinc':
     ensure    => running,
     hasstatus => false,
-    noop      => (not $manageservice)
+    noop      => $service_noop
   }
 
   concat { '/etc/tinc/nets.boot':
