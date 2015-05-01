@@ -37,6 +37,11 @@ define tinc::network(
     creates => "/etc/tinc/${netname}/rsa_key.priv",
     require => File["/etc/tinc/${netname}/tinc.conf"]
   }
+  ->
+  exec { "tinc-pubkey-${netname}":
+    command => "/usr/bin/openssl rsa -in /etc/tinc/${netname}/rsa_key.priv -out /etc/tinc/${netname}/rsa_key.pub -pubout",
+    creates => "/etc/tinc/${netname}/rsa_key.pub",
+  }
 
   file { "/etc/tinc/${netname}/tinc.conf":
     ensure  => present,
