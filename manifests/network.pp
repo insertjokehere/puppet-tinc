@@ -1,6 +1,7 @@
 
 define tinc::network(
   $vpnaddress,
+  $vpnprefix='24',
   $vpnroute=[],
   $netname=$name,
   $autostart=true,

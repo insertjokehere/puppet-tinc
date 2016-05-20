@@ -1,6 +1,6 @@
 #!/bin/sh
 ip link set $INTERFACE up
-ip addr add <%= @vpnaddress %> dev $INTERFACE
+ip addr add <%= @vpnaddress %>/<%= @vpnprefix %> dev $INTERFACE
 <% @vpnroute.each do |val| -%>
 route add -net <%= val %> $INTERFACE
 <% end %>
